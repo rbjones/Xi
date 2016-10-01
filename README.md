@@ -3,12 +3,12 @@ An experimental approach to deep learning interactive theorem proving.
 
 This is primarily for me an educational exercise in the application of Deep Learning to Interactive Theorem Proving.
 
-I have some experience with interactive theorem proving, both in the use and the development of these tools, mainly through my involvement in the development and application of ProofPower, but I have no practical experience of neural nets.
+I have some experience with interactive theorem proving, both in the use and the development of these tools, mainly through my involvement in the development and application of ProofPower, but I have no practical experience of deep learning or of neural nets.
 
-I have decided to do this through the development of an entirely new interactive theorem prover, using a language I have never used before (python).
+I have decided to do this through the development of an entirely new interactive theorem prover (ITP), using a language I have never used before (python).
 
 In the course of developing an ITP for industrial applications many compromises are necessary, and so there are many ideas which I have favoured but not been able to do (mostly because of needing to be risk averse).
-This experiment will evaluate many of these ideas, so its a bit like a fantasy ITP, to many speculative ideas to have much chance of success.
+This experiment will evaluate some of those ideas, so its a bit like a fantasy ITP, to many speculative ideas to have much chance of success.
 Its here on a public repository not so much in the expectation of collaborative participation as just in case one or more of the ideas might prove useful to someone else.
 
 In the rest of this README I will outline the novel features which I hope to explore with this prototype.
@@ -24,14 +24,3 @@ The proposed logic is itself highly speculative.
 It is not yet defined and there is a high risk that (like most supposedly strong illative combinatory logics) it will prove inconsistent.
 In the short term it will benefit only from an informal rationale.
 
-The remainder of the README will enumerate with the briefest of explanations the key features of the system proposed.
-
-1. It will support the abstract logic &XiL;, which has no definite concrete syntax.  Other languages and logics as concrete presentations of &Xi;L expressions.
-
-2. The logic will be a Hilbert style deductive system.
-
-3. The implementqtion paradigm will be derived from the LCF paradigm.
-
-4. The implementation language will be python, but an executable subset of &Xi; will be used for tactical programming.
-
-5. Theorem proving will be *distributed*.
