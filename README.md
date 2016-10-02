@@ -1,5 +1,6 @@
 # Xi
 An experimental approach to deep learning interactive theorem proving.
+======================================================================
 
 This is primarily for me an educational exercise in the application of Deep Learning to Interactive Theorem Proving.
 
