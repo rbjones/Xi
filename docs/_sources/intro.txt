@@ -43,3 +43,7 @@ which I think of greatest interest.
 4. The implementation language will be python, but an executable subset of &Xi; will be used for tactical programming.
 
 5. Theorem proving will be *distributed*.
+
+.. automodule:: Xip
+   :members:
+   :undoc-members:
