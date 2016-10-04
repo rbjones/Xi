@@ -73,7 +73,7 @@ which I think of greatest interest.
    execution of this compiled code to contribute to the proof (or evaluation)
    of conjectures directly or indirectly involving that function.
 
--  The implementqtion paradigm will be derived from the LCF paradigm.
+-  The implementation paradigm will be derived from the LCF paradigm.
    Not sure how much of that paradigm will remain after the changes
    I have in mind.
 
