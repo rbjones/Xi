@@ -1,5 +1,6 @@
+==================================
 **Introduction to The Xi Project**
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+==================================
 
 The **Xi** project is a trial in the application
 of "Deep Learning" to interactive proof.
@@ -43,7 +44,3 @@ which I think of greatest interest.
 4. The implementation language will be python, but an executable subset of &Xi; will be used for tactical programming.
 
 5. Theorem proving will be *distributed*.
-
-.. automodule:: Xip
-   :members:
-   :undoc-members:

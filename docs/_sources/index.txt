@@ -14,6 +14,7 @@ Contents:
    intro
    language
    logic
+   modules
 	      
 Indices and tables
 ==================
