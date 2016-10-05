@@ -6,7 +6,7 @@
     =====================
 
     :copyright: Copyright 2016 Roger Bishop Jones
-    :license: BSD 2-Clause Licence, see LICENSE for details.
+    :license: BSD 2-Clause Licence, see LICENCE for details.
 
     I did consider making this into a class, but I couldn't figure
     out what the benefit would be, so for the time being its just
@@ -27,7 +27,7 @@
     the function and the argument (both terms).
 """
 
-def MkVar (name):
+def MkVar (name:str):
     """ construct a term which is a variable """
     return (0, name, 0)
 
@@ -39,23 +39,28 @@ def MkApp (f, a):
     """ constructs a term which is an application """
     return(2, f, a)
 
-def IsVar (k, l, r):
+def IsVar (t):
     """ tests whether a term is a variable """
-    return k == 0
+    return t(0) == 0
 
-def IsAbs (k, l, r):
+def IsAbs (t):
     """ tests whether a term is an abstraction """
-    return k == 1
+    return t(1) == 1
 
-def IsApp (k, l, r):
+def IsApp (t):
     """ tests whether a term is an application """
-    return k == 2
+    return t(2) == 2
 
-def DestTerm (k, l, r):
+def DestTerm (t):
     """ disassembles a term, returning a 3-tuple in which the first element
         is 0, 1 or 2 according as the term is a variable,
         abstraction or application, and the next one or two elements are
         the immediate constituents."""
-    return (k, l, r)
+    return t
 
-
+def Frees (k, l, r):
+    """ returns the set of free variables of a term """
+    k = t(0)
+    if k == 0: return set(l)
+    elif k == 1: return Frees(t(2)) - set(t(1))
+    elif k == 2: return Frees(t(1)) & Frees(t(2))

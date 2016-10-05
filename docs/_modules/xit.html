@@ -51,7 +51,7 @@
 <span class="sd">    =====================</span>
 
 <span class="sd">    :copyright: Copyright 2016 Roger Bishop Jones</span>
-<span class="sd">    :license: BSD 2-Clause Licence, see LICENSE for details.</span>
+<span class="sd">    :license: BSD 2-Clause Licence, see LICENCE for details.</span>
 
 <span class="sd">    I did consider making this into a class, but I couldn&#39;t figure</span>
 <span class="sd">    out what the benefit would be, so for the time being its just</span>
@@ -72,7 +72,7 @@
 <span class="sd">    the function and the argument (both terms).</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="MkVar"><a class="viewcode-back" href="../modules.html#xit.MkVar">[docs]</a><span class="k">def</span> <span class="nf">MkVar</span> <span class="p">(</span><span class="n">name</span><span class="p">):</span>
+<div class="viewcode-block" id="MkVar"><a class="viewcode-back" href="../modules.html#xit.MkVar">[docs]</a><span class="k">def</span> <span class="nf">MkVar</span> <span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; construct a term which is a variable &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></div>
 
@@ -84,26 +84,31 @@
     <span class="sd">&quot;&quot;&quot; constructs a term which is an application &quot;&quot;&quot;</span>
     <span class="k">return</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="IsVar"><a class="viewcode-back" href="../modules.html#xit.IsVar">[docs]</a><span class="k">def</span> <span class="nf">IsVar</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+<div class="viewcode-block" id="IsVar"><a class="viewcode-back" href="../modules.html#xit.IsVar">[docs]</a><span class="k">def</span> <span class="nf">IsVar</span> <span class="p">(</span><span class="n">t</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; tests whether a term is a variable &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">0</span></div>
+    <span class="k">return</span> <span class="n">t</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span></div>
 
-<div class="viewcode-block" id="IsAbs"><a class="viewcode-back" href="../modules.html#xit.IsAbs">[docs]</a><span class="k">def</span> <span class="nf">IsAbs</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+<div class="viewcode-block" id="IsAbs"><a class="viewcode-back" href="../modules.html#xit.IsAbs">[docs]</a><span class="k">def</span> <span class="nf">IsAbs</span> <span class="p">(</span><span class="n">t</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; tests whether a term is an abstraction &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">1</span></div>
+    <span class="k">return</span> <span class="n">t</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span></div>
 
-<div class="viewcode-block" id="IsApp"><a class="viewcode-back" href="../modules.html#xit.IsApp">[docs]</a><span class="k">def</span> <span class="nf">IsApp</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+<div class="viewcode-block" id="IsApp"><a class="viewcode-back" href="../modules.html#xit.IsApp">[docs]</a><span class="k">def</span> <span class="nf">IsApp</span> <span class="p">(</span><span class="n">t</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; tests whether a term is an application &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">2</span></div>
+    <span class="k">return</span> <span class="n">t</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span></div>
 
-<div class="viewcode-block" id="DestTerm"><a class="viewcode-back" href="../modules.html#xit.DestTerm">[docs]</a><span class="k">def</span> <span class="nf">DestTerm</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+<div class="viewcode-block" id="DestTerm"><a class="viewcode-back" href="../modules.html#xit.DestTerm">[docs]</a><span class="k">def</span> <span class="nf">DestTerm</span> <span class="p">(</span><span class="n">t</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; disassembles a term, returning a 3-tuple in which the first element</span>
 <span class="sd">        is 0, 1 or 2 according as the term is a variable,</span>
 <span class="sd">        abstraction or application, and the next one or two elements are</span>
 <span class="sd">        the immediate constituents.&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">t</span></div>
 
-
+<div class="viewcode-block" id="Frees"><a class="viewcode-back" href="../modules.html#xit.Frees">[docs]</a><span class="k">def</span> <span class="nf">Frees</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; returns the set of free variables of a term &quot;&quot;&quot;</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">t</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="k">return</span> <span class="n">Frees</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span> <span class="k">return</span> <span class="n">Frees</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="o">&amp;</span> <span class="n">Frees</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span></div>
 </pre></div>
 
           </div>

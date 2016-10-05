@@ -52,7 +52,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">copyright:</th><td class="field-body">Copyright 2016 Roger Bishop Jones</td>
 </tr>
-<tr class="field-even field"><th class="field-name">license:</th><td class="field-body">BSD 2-Clause Licence, see LICENSE for details.</td>
+<tr class="field-even field"><th class="field-name">license:</th><td class="field-body">BSD 2-Clause Licence, see LICENCE for details.</td>
 </tr>
 </tbody>
 </table>
@@ -71,7 +71,7 @@ being bound and the third is the body of the abstraction (a term).</p>
 the function and the argument (both terms).</p>
 <dl class="function">
 <dt id="xit.DestTerm">
-<code class="descclassname">xit.</code><code class="descname">DestTerm</code><span class="sig-paren">(</span><em>k</em>, <em>l</em>, <em>r</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xit.html#DestTerm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xit.DestTerm" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">xit.</code><code class="descname">DestTerm</code><span class="sig-paren">(</span><em>t</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xit.html#DestTerm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xit.DestTerm" title="Permalink to this definition">¶</a></dt>
 <dd><p>disassembles a term, returning a 3-tuple in which the first element
 is 0, 1 or 2 according as the term is a variable,
 abstraction or application, and the next one or two elements are
@@ -79,20 +79,26 @@ the immediate constituents.</p>
 </dd></dl>
 
 <dl class="function">
+<dt id="xit.Frees">
+<code class="descclassname">xit.</code><code class="descname">Frees</code><span class="sig-paren">(</span><em>k</em>, <em>l</em>, <em>r</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xit.html#Frees"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xit.Frees" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns the set of free variables of a term</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="xit.IsAbs">
-<code class="descclassname">xit.</code><code class="descname">IsAbs</code><span class="sig-paren">(</span><em>k</em>, <em>l</em>, <em>r</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xit.html#IsAbs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xit.IsAbs" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">xit.</code><code class="descname">IsAbs</code><span class="sig-paren">(</span><em>t</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xit.html#IsAbs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xit.IsAbs" title="Permalink to this definition">¶</a></dt>
 <dd><p>tests whether a term is an abstraction</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="xit.IsApp">
-<code class="descclassname">xit.</code><code class="descname">IsApp</code><span class="sig-paren">(</span><em>k</em>, <em>l</em>, <em>r</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xit.html#IsApp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xit.IsApp" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">xit.</code><code class="descname">IsApp</code><span class="sig-paren">(</span><em>t</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xit.html#IsApp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xit.IsApp" title="Permalink to this definition">¶</a></dt>
 <dd><p>tests whether a term is an application</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="xit.IsVar">
-<code class="descclassname">xit.</code><code class="descname">IsVar</code><span class="sig-paren">(</span><em>k</em>, <em>l</em>, <em>r</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xit.html#IsVar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xit.IsVar" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">xit.</code><code class="descname">IsVar</code><span class="sig-paren">(</span><em>t</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xit.html#IsVar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xit.IsVar" title="Permalink to this definition">¶</a></dt>
 <dd><p>tests whether a term is a variable</p>
 </dd></dl>
 
@@ -110,7 +116,7 @@ the immediate constituents.</p>
 
 <dl class="function">
 <dt id="xit.MkVar">
-<code class="descclassname">xit.</code><code class="descname">MkVar</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xit.html#MkVar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xit.MkVar" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">xit.</code><code class="descname">MkVar</code><span class="sig-paren">(</span><em>name: str</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xit.html#MkVar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xit.MkVar" title="Permalink to this definition">¶</a></dt>
 <dd><p>construct a term which is a variable</p>
 </dd></dl>
 
