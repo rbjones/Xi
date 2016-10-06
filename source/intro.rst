@@ -3,38 +3,41 @@
 ==================================
 
 The **Xi** project is a trial in the application
-of "Deep Learning" to interactive proof.
+of "Deep Learning" to interactive proof, and a number of other ideas/
 
 To give maximum scope for adaptation of interative
-proof to the exploitation of deep learning the project
-uses a completely new ITP (Interactive Theorem Prover) system, which implements
-a new language and logic in novel ways.
+proof to the exploitation of "deep learning" the project
+uses a completely new ITP (Interactive Theorem Prover) system,
+which implement a new language and logic in novel ways.
 The name Xi is used for the project, the language and logic, and for the
 interactive theorem prover.
+Because this logical system is speculative and will probably prove
+to be either inconsistent or unusable, I am thinking of doing a better
+established logic as well, HOL (Higher Order Logic), so I will be working
+on two interactive proof tools, hopefully sharing a lot of code.
 
-My own background is primarily with the Cambridge HOL system and with
-ProofPower, so often in describing Xi I will use comparisons with HOL or
-ProofPower.
+In describing the new logical system and its proof support I may
+contrast it with HOL and its proof tools, so it will be easier to
+understand what I am saying if you have previous exposure to interactive
+proof in HOL.
 
 The main aim is to try out the application of deep learning to ITP, so the
 other new things I am thinking of doing with this project are secondary,
 and any of them that seems to be getting in the way of the deep learning
-I may decide to drop.
+I may decide to drop (including the Xi logic).
 There's no particular reason why any of them *should* get in the way, but
-any of them might prove to be more difficult than I imagine and in that
-way might get in the way of my primary purposes, in which case it may get dropped.
+any of them might prove to be more difficult than I imagine
+and in that way might get in the way of my primary purposes,
+in which case it may get dropped.
 
-I'm going to list here the aspects of the project, as I now envisage it,
-which I think of greatest interest.
+The rest of the introduction falls into three parts.
+First a sketch of the generic aspects of the project, those features which
+the proof tools share, and then one part each for the specifics of the two
+logical systems.
 
--  The abstract language and logic Xi
+Shared features of the proof tools
+..................................
 
-   This is an un-typed illative lambda calculus,
-   intended for use with varied concrete syntax
-   and in that way providing linguistic pluralism by semantic embedding.
-
-   The most elementary concrete syntax is a functional sublanguage of Python.
-   
 -  A distributed theory datatabase
 
    All work takes place in a context.
@@ -51,6 +54,39 @@ which I think of greatest interest.
    can be seen to be unsound.
    Normally modification of a context would be reflected by a change to the URI
    which typically would include a version number.
+   
+-  Theorem proving will be *distributed*.
+
+   This follows from the distributed nature of the Xi contexts.
+
+-  The implementation language will be python.
+
+   At least that's my starting position, which is mainly because python
+   interfaces for Deep Learning seem to be pretty good.
+   But if it turns out to be particularly unsuitable for the other aspects
+   of the projet I might change my mind!
+   (I am new to Phython}
+
+   Tactical programming will use the executable (and compilable)
+   subset of the subset of python which provides the elementary
+   concrete syntax for Xi.
+
+    
+The HOL Logic and its proof tool
+................................
+   
+
+
+The Xi Logic and its proof tool
+...............................
+
+-  The abstract language and logic Xi
+
+   This is an un-typed illative lambda calculus,
+   intended for use with varied concrete syntax
+   and in that way providing linguistic pluralism by semantic embedding.
+
+   The most elementary concrete syntax is a functional sublanguage of Python.
    
 -  The logic will be a Hilbert style deductive system.
 
@@ -76,13 +112,3 @@ which I think of greatest interest.
 -  The implementation paradigm will be derived from the LCF paradigm.
    Not sure how much of that paradigm will remain after the changes
    I have in mind.
-
--  The implementation language will be python.
-
-   Tactical programming will use the executable (and compilable)
-   subset of the subset of python which provides the elementary
-   concrete syntax for Xi.
-   
--   Theorem proving will be *distributed*.
-
-    This follows from the distributed nature of the Xi contexts.

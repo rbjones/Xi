@@ -26,6 +26,8 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="top" title="Xi 0 documentation" href="index.html" />
+    <link rel="next" title="The Xi Project Modules" href="modules.html" />
+    <link rel="prev" title="The Language XiL" href="language.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -49,7 +51,26 @@
 <blockquote>
 <div><p>alpha-conversion</p>
 <p>beta-conversion</p>
-<p>substitution into subterms using equations in the context of the term</p>
+<p>there is just one primitive combinator which is Xi(Ξ) and approximates equality
+though maybe better just to use &#8220;=&#8221;.</p>
+<p>Using &#8220;=&#8221; we define and axiomatise as follows:</p>
+<p>T = λx y.x</p>
+<p>F = λx y.y</p>
+<p>∀ = λp. p = λx.T</p>
+<p>∀x. x = x</p>
+<p>¬ = λx y z. x z y</p>
+<p>≠ = λx y. ¬(x = y)</p>
+<p>T ≠ F</p>
+<p>∨ = λx y. x T y</p>
+<p>∧ = λx y. x y F</p>
+<p>⇒ = λx y. y ∨ ¬ x</p>
+<p>∀ f g x. f x ≠ g x ⇒ f ≠ g</p>
+<p>Substitution into subterms using equations in the context of the term.
+This is a rule stating that if an equation is derivable in some context
+then a term in that context can be rewritten using that equation.</p>
+<p>C ⇒ T[Y/X]</p>
+<p>Where T[Y/X] is the result of substituting Y for X in T,
+provided X is free for Y in T.</p>
 </div></blockquote>
 <p>Strength is given by two axioms, the consistency of which is controversial:</p>
 <blockquote>
@@ -70,6 +91,8 @@
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="language.html" title="previous chapter">The Language XiL</a></li>
+      <li>Next: <a href="modules.html" title="next chapter"><strong>The Xi Project Modules</strong></a></li>
   </ul></li>
 </ul>
 </div>
