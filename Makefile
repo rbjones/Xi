@@ -30,6 +30,7 @@ help:
 	@echo "  epub3      to make an epub3"
 	@echo "  latex      to make LaTeX files, you can set PAPER=a4 or PAPER=letter"
 	@echo "  latexpdf   to make LaTeX files and run them through pdflatex"
+	@echo "  xelatex    to make LaTeX files and run them through xelatex"
 	@echo "  latexpdfja to make LaTeX files and run them through platex/dvipdfmx"
 	@echo "  text       to make text files"
 	@echo "  man        to make manual pages"
@@ -133,6 +134,13 @@ latex:
 	@echo "Build finished; the LaTeX files are in $(BUILDDIR)/latex."
 	@echo "Run \`make' in that directory to run these through (pdf)latex" \
 	      "(use \`make latexpdf' here to do that automatically)."
+
+.PHONY: xelatex
+xelatex:
+	$(SPHINXBUILD) -b latex $(ALLSPHINXOPTS) $(BUILDDIR)/latex
+	@echo "Running LaTeX files through xelatex..."
+	$(MAKE) -C $(BUILDDIR)/latex all-pdf
+	@echo "xeflatex finished; the PDF files are in $(BUILDDIR)/latex."
 
 .PHONY: latexpdf
 latexpdf:

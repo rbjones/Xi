@@ -73,42 +73,92 @@
 <span class="sd">&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="MkVar"><a class="viewcode-back" href="../modules.html#xit.MkVar">[docs]</a><span class="k">def</span> <span class="nf">MkVar</span> <span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; construct a term which is a variable &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot; construct a term which is a variable </span>
+
+<span class="sd">    &gt;&gt;&gt; MkVar(&quot;Ξ&quot;)</span>
+<span class="sd">    (0, &#39;Ξ&#39;, 0)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="MkAbs"><a class="viewcode-back" href="../modules.html#xit.MkAbs">[docs]</a><span class="k">def</span> <span class="nf">MkAbs</span> <span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; constructs a term which is an abstraction &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="MkAbs"><a class="viewcode-back" href="../modules.html#xit.MkAbs">[docs]</a><span class="k">def</span> <span class="nf">MkAbs</span> <span class="p">(</span><span class="n">v</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; constructs a term which is an abstraction </span>
+
+<span class="sd">    &gt;&gt;&gt; MkAbs(&quot;∀&quot;, MkVar(&quot;Ξ&quot;))</span>
+<span class="sd">    (1, &#39;∀&#39;, (0, &#39;Ξ&#39;, 0))</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MkApp"><a class="viewcode-back" href="../modules.html#xit.MkApp">[docs]</a><span class="k">def</span> <span class="nf">MkApp</span> <span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; constructs a term which is an application &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot; constructs a term which is an application</span>
+
+<span class="sd">    &gt;&gt;&gt; MkApp(MkVar(&quot;∀&quot;), MkVar(&quot;Ξ&quot;))</span>
+<span class="sd">    (2, (0, &#39;∀&#39;, 0), (0, &#39;Ξ&#39;, 0))</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="IsVar"><a class="viewcode-back" href="../modules.html#xit.IsVar">[docs]</a><span class="k">def</span> <span class="nf">IsVar</span> <span class="p">(</span><span class="n">t</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; tests whether a term is a variable &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">t</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span></div>
+    <span class="sd">&quot;&quot;&quot; tests whether a term is a variable</span>
+
+<span class="sd">    &gt;&gt;&gt; IsVar(MkApp(MkVar(&quot;∀&quot;), MkVar(&quot;Ξ&quot;)))</span>
+<span class="sd">    False</span>
+<span class="sd">    &gt;&gt;&gt; IsVar(MkVar(&quot;Ξ&quot;))</span>
+<span class="sd">    True</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span></div>
 
 <div class="viewcode-block" id="IsAbs"><a class="viewcode-back" href="../modules.html#xit.IsAbs">[docs]</a><span class="k">def</span> <span class="nf">IsAbs</span> <span class="p">(</span><span class="n">t</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; tests whether a term is an abstraction &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">t</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span></div>
+    <span class="sd">&quot;&quot;&quot; tests whether a term is an abstraction</span>
+
+<span class="sd">    &gt;&gt;&gt; IsAbs(MkAbs(&quot;∀&quot;, MkVar(&quot;Ξ&quot;)))</span>
+<span class="sd">    True</span>
+<span class="sd">    &gt;&gt;&gt; IsAbs(MkVar(&quot;Ξ&quot;))</span>
+<span class="sd">    False</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span></div>
 
 <div class="viewcode-block" id="IsApp"><a class="viewcode-back" href="../modules.html#xit.IsApp">[docs]</a><span class="k">def</span> <span class="nf">IsApp</span> <span class="p">(</span><span class="n">t</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; tests whether a term is an application &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">t</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span></div>
+    <span class="sd">&quot;&quot;&quot; tests whether a term is an application</span>
+
+<span class="sd">    &gt;&gt;&gt; IsApp(MkApp(MkVar(&quot;∀&quot;), MkVar(&quot;Ξ&quot;)))</span>
+<span class="sd">    True</span>
+<span class="sd">    &gt;&gt;&gt; IsApp(MkVar(&quot;Ξ&quot;))</span>
+<span class="sd">    False</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span></div>
 
 <div class="viewcode-block" id="DestTerm"><a class="viewcode-back" href="../modules.html#xit.DestTerm">[docs]</a><span class="k">def</span> <span class="nf">DestTerm</span> <span class="p">(</span><span class="n">t</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; disassembles a term, returning a 3-tuple in which the first element</span>
 <span class="sd">        is 0, 1 or 2 according as the term is a variable,</span>
 <span class="sd">        abstraction or application, and the next one or two elements are</span>
-<span class="sd">        the immediate constituents.&quot;&quot;&quot;</span>
+<span class="sd">        the immediate constituents.</span>
+
+<span class="sd">    &gt;&gt;&gt; DestTerm(MkApp(MkVar(&quot;∀&quot;), MkVar(&quot;Ξ&quot;)))</span>
+<span class="sd">    (2, (0, &#39;\u2200&#39;, 0), (0, &#39;\u039e&#39;, 0))</span>
+<span class="sd">    &gt;&gt;&gt; DestTerm(MkVar(&quot;Ξ&quot;))</span>
+<span class="sd">    (0, &#39;\u039e&#39;, 0)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">t</span></div>
 
-<div class="viewcode-block" id="Frees"><a class="viewcode-back" href="../modules.html#xit.Frees">[docs]</a><span class="k">def</span> <span class="nf">Frees</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; returns the set of free variables of a term &quot;&quot;&quot;</span>
-    <span class="n">k</span> <span class="o">=</span> <span class="n">t</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="k">return</span> <span class="n">Frees</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-    <span class="k">elif</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span> <span class="k">return</span> <span class="n">Frees</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="o">&amp;</span> <span class="n">Frees</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span></div>
+<div class="viewcode-block" id="Frees"><a class="viewcode-back" href="../modules.html#xit.Frees">[docs]</a><span class="k">def</span> <span class="nf">Frees</span> <span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; returns the set of free variables of a term</span>
+
+<span class="sd">    &gt;&gt;&gt; Frees(MkApp(MkVar(&quot;∀&quot;), MkVar(&quot;Ξ&quot;)))</span>
+<span class="sd">    {&#39;Ξ&#39;, &#39;∀&#39;}</span>
+<span class="sd">    &gt;&gt;&gt; Frees(MkVar(&quot;Ξ&quot;))</span>
+<span class="sd">    {&#39;Ξ&#39;}</span>
+<span class="sd">    &gt;&gt;&gt; Frees(MkAbs(&quot;∀&quot;, MkVar(&quot;Ξ&quot;)))</span>
+<span class="sd">    {&#39;Ξ&#39;}</span>
+<span class="sd">    &gt;&gt;&gt; Frees(MkAbs(&quot;Ξ&quot;, MkVar(&quot;Ξ&quot;)))</span>
+<span class="sd">    set()</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">elif</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="k">return</span> <span class="n">Frees</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">elif</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span> <span class="k">return</span> <span class="n">Frees</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">|</span> <span class="n">Frees</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span></div>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">doctest</span>
+    <span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">()</span>
 </pre></div>
 
           </div>
