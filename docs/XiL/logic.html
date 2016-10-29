@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>The Logic Xi &#8212; Xi 0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="Xi 0 documentation" href="../index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="the-logic-xi">
+<h1>The Logic Xi<a class="headerlink" href="#the-logic-xi" title="Permalink to this headline">¶</a></h1>
+<p>I am considering two deductive systems for this project.
+One is the well established HOL logic, a polymorphic form of Church&#8217;s
+Simple Type Theory as implemented in the Cambridge HOL system, and in
+HOL light, ProofPower and other systems.</p>
+<p>The second is the Logic which I am calling Xi or Ξ, of which the rest of
+this document is a sketch.</p>
+<p>The system will have a dual presentation.
+In the more primitive of these presentations it is a type-free,
+&#8220;illative&#8221; lambda calculus
+(i.e. a lambda calculus with a primitive logical combinator).
+The primitive combinator is an approximation to equality of the terms
+of the language, and is a partial equivalence relation.
+In this form the deductive system is a Hilbery-style deductive system
+in which the sentences are terms of the illative lambda calculus, and
+the deductive system proves a subset of the terms reducible to &#8220;T&#8221;.
+A distinctive feature of this lambda-calculus is that there is no
+distinction between variables and constants, so in this way it is
+similar to most programming languages.</p>
+<p>Under this interpretation, the entire theory heirarchy is construed as
+a lambda-term with the proof process adding additional subterms as
+required.</p>
+<p>In practice the principle mode of inference is by contextual rewriting of terms,
+i.e. by the rewriting of subterms using equations which are derivable from
+the context of the subterm in the term as a whole.
+This is best described by giving the structure of a &#8220;context&#8221; in which the
+context of subterm is captured for use in transforming the subterm, and the
+theory hierarchy is then viewed as providing the top or earliest layers of
+the structured context for the theorems being derived.</p>
+<p>The following details are very tentative, particularly the concrete syntax,
+which will in any case be varied according to context.</p>
+<p>The inference rules are:</p>
+<blockquote>
+<div><p>alpha-conversion</p>
+<p>beta-conversion</p>
+<p>there is just one primitive combinator which I had intended to call Xi(Ξ) and approximates
+equality, but maybe better just to use &#8220;=&#8221;.</p>
+<p>Using &#8220;=&#8221; we define and axiomatise as follows:</p>
+<p>T = λx y.x</p>
+<p>F = λx y.y</p>
+<p>Now think of a (partial) set as a function which yields T when
+and only when applied to members of the set.
+On this basis we now define a very important notion of
+universal quantification.</p>
+<p>The universal here is bounded quantification or what the combinatory
+theorists called restricted generality (and used the symbol Ξ for):</p>
+<p>∀ = λp q. (p = λx.(p x)(q x)(p x))</p>
+<p>Think of the first argument as a set and the second as a predicate which is true
+for every member of that set.</p>
+<p>I will use the sugar ∀x:A.B to mean ∀A(λx.B)</p>
+<p>You can get unrestricted universal quantification by defining V as:</p>
+<p>V = λx.T</p>
+<p>So universal quantification can be written &#8220;∀x:V.A(x)&#8221;.
+We won&#8217;t be using it a lot, because not much is true of everything.</p>
+<p>∀ = λp. (p = λx.T)</p>
+<p>∀x. x = x</p>
+<p>¬ = λx y z. x z y</p>
+<p>≠ = λx y. ¬(x = y)</p>
+<p>T ≠ F</p>
+<p>∨ = λx y. x T y</p>
+<p>∧ = λx y. x y F</p>
+<p>⇒ = λx y. y ∨ ¬ x</p>
+<p>∀ f g x. f x ≠ g x ⇒ f ≠ g</p>
+<p>Substitution into subterms using equations in the context of the term.
+This is a rule stating that if an equation is derivable in some context
+then a term in that context can be rewritten using that equation.</p>
+<p>C ⇒ X=Y,  C ⇒ T</p>
+<p>===============</p>
+<p>C ⇒ T[Y/X]</p>
+<p>Where T[Y/X] is the result of substituting Y for X in T,
+provided X is free for Y in T.</p>
+<p>Strength is given by two axioms, the exact form not yet settled.
+and the consistency of which are controversial:</p>
+<ul class="simple">
+<li>choice, in the form a well-ordering assertion</li>
+<li>strong infinity, asserting the existence of a large well-ordering</li>
+</ul>
+</div></blockquote>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/XiL/logic.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Roger Bishop Jones.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.8</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="../_sources/XiL/logic.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
