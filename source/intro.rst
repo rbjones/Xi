@@ -3,11 +3,39 @@
 ==================================
 
 The **Xi** project is a trial in the application
-of "Deep Learning" to interactive proof, and a number of other ideas/
+of "Deep Learning", and a number of other of-the-wall ideas,
+to interactive (formal, logical) proof.
+
+The set of innovative ideas which *might* be addressed
+include:
+
+- Deep Learning
+
+- A new language/logic
+
+- Proof by contextual rewriting (as a proof style or paradigm)
+
+- Distributed/Pluralistic/Assurance-tagged proof
+  (some ideas I previously considered under the heading X-Logic)
+
+- Possible use of blockchain technologies to achieve distributed
+  trust.
+
+Of course this is too many, but it is just an exploration,
+and I will be doing a lot of mix and match.
+So, for example, I may well do some work with parts of existing
+proof systems (probably ProoPower), using say the logical Kernal
+as a core for working with the HOL logic, and trying to fit
+the deep learning around it.
+
+Also, the two last items in the list are language-agnostic so
+I will be looking for approaches which could be made to work
+with either a new logic in a new tool, or existing logics in
+existing tools.
 
 To give maximum scope for adaptation of interative
-proof to the exploitation of "deep learning" the project
-uses a completely new ITP (Interactive Theorem Prover) system,
+proof to the exploitation of "deep learning" the project uses a
+new ITP (Interactive Theorem Prover) system,
 which implement a new language and logic in novel ways.
 The name Xi is used for the project, the language and logic, and for the
 interactive theorem prover.
